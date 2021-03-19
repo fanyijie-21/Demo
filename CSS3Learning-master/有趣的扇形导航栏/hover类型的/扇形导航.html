@@ -1,0 +1,133 @@
+<!-- 
+	再补充一个有关组合变换的天坑
+		如果连续变换时，相邻两次变换的内容和位置都不一样，则可能会出现一下奇怪的现象
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>很棒的一个小东西</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		#nav{
+			height: 50px;
+			width: 50px;
+			background-color: pink;
+			position: absolute;
+			bottom: 5%;
+			right: 5%;
+		}
+		#home{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+		}
+		#home > img{
+			border-radius: 50%;
+			transition: 2s;
+			/*transform-origin: 50% 50%;*/
+		}
+		#apps > img{
+			border-radius: 50%;
+			height: 100%;
+			width: 100%;
+			/*display: block;*/
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		/*#apps > img:hover{
+			transform: scale(1.5);
+		}*/
+		.big:hover{
+			transform: scale(1.5);
+		}
+	</style>
+</head>
+<body>
+	<div id="nav">
+		<div id="home">
+			<img src="./img/heart.png" width="50" height="50">
+		</div>
+		<div id="apps">	
+			<img src="./img/plus.png" width="50" height="50">
+			<img src="./img/close.png" width="50" height="50">
+			<img src="./img/left.png" width="50" height="50">
+			<img src="./img/reload.png" width="50" height="50">
+			<img src="./img/setting.png" width="50" height="50">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var home=document.getElementById('home');
+		var img=home.children[0];
+		var apps=document.getElementById('apps');
+		var imgList=apps.children;
+		var flag=true;
+		var radius=150;
+		var deg=(90/(imgList.length-1));
+		home.onclick=function(){
+			if(flag){
+				img.style.transform="rotate(360deg)";
+				for(let i=0;i<imgList.length;i++){
+					addName(imgList[i],"big");
+					var left=Position(radius,deg*i).left;
+					var top=Position(radius,deg*i).top;
+					var current=getStyle(imgList[i],"transform");
+					imgList[i].style.transition=1+i*0.2+"s";
+					imgList[i].style.left=-left+"px";
+					imgList[i].style.top=-top+"px";
+					imgList[i].style.transform=current+" "+"rotate(360deg)";
+					// imgList[i].onmousemove=function(){
+					// 	// imgList[i].style.transform=current+" "+"scale(1.5)";
+					// }
+				}
+			}else{
+				img.style.transform="rotate(0)";
+				for(var i=0;i<imgList.length;i++){
+					imgList[i].style.transition=1+i*0.2+"s";
+					imgList[i].style.transform="";
+					imgList[i].style.left=0;
+					imgList[i].style.top=0;	
+					delName(imgList[i],"big");
+				}
+			}
+
+			flag=!flag;
+		}
+		function Position(radius,deg){
+				/!!!!!注意，Math里的有关角度的函数单位都是弧度，切记/ 
+				deg=deg*Math.PI/180;
+				var x=radius*Math.sin(deg);
+				var y=radius*Math.cos(deg);
+			return {
+				left:x,
+				top: y
+			}
+		}
+		function hasName(obj,cn){
+			var reg=new RegExp("\\b"+cn+"\\b");
+			return reg.test(obj.className);
+		}
+		function addName(obj,cn){
+			if(!hasName(obj,cn)){
+				obj.className+=" "+cn;
+			}
+		}
+		function getStyle(obj,style){
+			var obj=getComputedStyle(obj);
+			return obj[style];
+		}
+		function delName(obj,cn){
+			var reg=new RegExp("\\b"+cn+"\\b");
+			obj.className=obj.className.replace(reg,"");
+		}
+	</script>
+</body>
+</html>

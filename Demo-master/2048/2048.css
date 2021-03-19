@@ -1,0 +1,67 @@
+/* header及header内部样式设置 */
+header{
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+h1{
+	font-family: Arial;
+	font-size: 40px;
+	font-weight: bold;
+}
+header #newGameButton{
+	display: block;
+	margin: 20px auto;
+
+	width: 100px;
+	padding: 10px;
+	background-color: #8f7a66;
+
+	font-family: Arial;
+	color: white;
+
+	border-radius: 10px;
+
+	text-decoration: none;
+}
+header #newGameButton:hover{
+	background-color: #9f8b77;
+}
+p{
+	font-family: Arial;
+	font-size: 25px;
+	margin: 20px auto;
+}
+
+/*gridContain及gridContainer里的元素的样式设计*/
+#grid-container{
+	width: 460px;
+	height: 460px;
+	padding: 20px;
+
+	margin: 50px auto;
+	background-color: #bbada0;
+
+	border-radius: 10px;
+	position: relative;
+}
+.grid-cell{
+	height: 100px;
+	width: 100px;
+	border-radius: 6px;
+	background-color: #ccc0b3;
+
+	position: absolute;
+}
+.number-cell{
+	border-radius: 6px;
+
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 50px;
+	line-height: 100px;
+	text-align: center;
+
+	position: absolute;
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            perspective: 1px;/*perspective 属性定义 3D 元素距视图的距离，以像素计。*/
+            transform-style: preserve-3d;/*使被转换的子元素保留其 3D 转换：子元素将保留其 3D 位置。*/
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .g-container {
+            height: 150%;
+            font-size:30pt;
+        }
+        .section-one {
+            transform: translateZ(-1px);/*定义 3D 转换，只是用 Z 轴的值。,z值越大，距离人眼越近*/
+        }
+        .section-two {
+            transform: translateZ(-2px);
+        }
+        .section-three {
+            transform: translateZ(-3px);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="g-container">
+    <div class="section-one">SECTION</div>
+    <div class="section-two">SECTION</div>
+    <div class="section-three">SECTION</div>
+</div>    
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		#box1{
+			width: 500px;
+			height: 500px;
+			background-color: lightyellow;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			perspective: 300px;
+			text-align: center;
+			font-size: 30px;
+		}
+		#box1 #box2{
+			width: 200px;
+			height: 200px;
+			/*background-color: pink;*/
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			transition: 3s;
+			transform-style: preserve-3d;
+		}
+		#box1:hover #box2{
+			transform:rotateY(720deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var box2=document.getElementById('box2');
+			var divList="";
+			addDiv(6);/*n为传入的参数，用来定义是几棱柱*/
+			function addDiv(n){
+				for(var i=0;i<n;i++){
+					divList+="<div>"+(i+1)+"</div>";
+				}
+				box2.innerHTML=divList;		
+				var style=document.createElement("style");/*用来生成一个style节点，因为一般的css样式都是link进来的*/
+				style.type="text/css";
+				var head=document.querySelector("head");
+				head.append(style);
+				var outDeg=360/n;/*外角度数  科普一下，中学知识：多边形的外角之和都是360°，内角=180°-外角*/
+				var Indeg=180-outDeg;/*内角度数*/
+				var side=parseInt(getStyle(box2,"width"));/*获取棱柱的边长*/
+				var distance=Math.tan(Indeg/2*Math.PI/180)*side/2;/*获得多棱柱的内接球球心到侧面的距离，具体的数学怎么定义的忘了，高中数学学的不好(╯﹏╰)*/
+				box2.style.transformOrigin="center center "+(-distance)+"px";
+				style.innerHTML="#box1 > #box2 > div{"+"position: absolute;width: 100%;height: 100%;background-color:rgba(123,233,123,.3);"+"transform-origin: center center "+(-distance)+"px;line-height:"+side+"px;}";
+				for(var i=1;i<n+1;i++){
+					style.innerHTML+="#box1 > #box2 > div:nth-child("+i+"){transform:rotateY("+(outDeg*i)+"deg);}";
+				}
+			}
+			function getStyle(obj,style){
+				var obj=getComputedStyle(obj);
+				return obj[style];
+			}
+		}
+	</script>
+</body>
+</html>

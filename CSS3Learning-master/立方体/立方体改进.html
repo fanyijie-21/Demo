@@ -1,0 +1,95 @@
+<!-- 
+	利用CSS3特性来布局立方体的六个面而不是利用定位
+	为之后的多棱柱建立做好铺垫
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		#box1{
+			width: 400px;
+			height: 400px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			background-color: #bfa;
+			text-align: center;
+			perspective: 300px;
+			/*transform-style: preserve-3d;*/
+			/*perspective-origin:center center;*/
+		}
+		#box1:after{
+			content: "";
+			height: 100%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			/*background-color: pink;*/
+			display: inline-block;
+			vertical-align: middle;
+			transform-style: preserve-3d;
+			transition: 3s;
+			transform-origin: center center -50px;	/*确定整个立方体变化的相对位置*/
+		}
+		#box2 > div{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			font-size: 30px;
+			line-height: 100px;
+			text-align: center;
+			background-color: rgba(123,233,331,.3);
+			transform-origin: center center -50px;	/*确定每个面变化的相对位置*/
+		}
+		#box2 > div:nth-child(1){
+			transform: rotateX(90deg);
+		}
+		#box2 > div:nth-child(2){
+			transform: rotateX(270deg);
+		}
+		#box2 > div:nth-child(3){
+			transform:rotateY(270deg);
+		}
+		#box2 > div:nth-child(4){
+			transform: rotateY(90deg);
+		}
+		#box2 > div:nth-child(5){
+		}
+		#box2 > div:nth-child(6){
+			transform: rotateY(180deg);
+		}
+		#box1:hover #box2{
+			transform: rotate3d(23,23,33,360deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			<div>上</div>
+			<div>下</div>
+			<div>左</div>
+			<div>右</div>
+			<div>前</div>
+			<div>后</div>
+		</div>
+	</div>
+</body>
+</html>

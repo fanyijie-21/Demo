@@ -1,0 +1,45 @@
+read me
+
+采取面向过程的开发方式
+
+1.游戏构架：MVC。
+		M 模型层	V 视图层	C 控制层
+		M:游戏数据；V：UI-HTML/CSS；C：游戏主逻辑-js/jquery;
+
+UI:2048.CSS 2048.html
+主逻辑：main2048.js
+动画效果逻辑：showaanimation2048.js
+底层支撑逻辑：support.js
+
+2.构建页面元素
+
+3.游戏逻辑：
+	var board 二维数组------updataBoardView()-------number-cell
+
+4.页面初始化过程：
+
+5.随机数动画：animate()
+
+6.游戏循环：基于时间 或 基于玩家响应
+
+7.基于玩家响应的循环
+
+8.交互细节
+
+9.gameover部分
+
+
+Web Applications				Native Applications
+	运行在服务器上					通过App Store下载
+	通过浏览器执行					直接运行在移动设备上
+	使用前端技术：					使用技术：
+		HTML 							Objective-C(ios)
+		CSS 							Java(Android)
+		Javascript
+
+发布Web Applications
+	使用Dropbox
+	限制：
+		静态网站
+		速度稍慢
+		域名不宜记忆

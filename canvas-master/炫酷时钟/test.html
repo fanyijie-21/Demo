@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小球掉落动画</title>
+	<style>
+		canvas{border: 1px solid #ccc;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">你的浏览器不支持canvas,请更换</canvas>
+	<script src="digit.js"></script>
+	<script>
+		var ball = {x:512, y:100, r:20, g:2, vx:-4, vy:-10, color:"blue"}
+
+		window.onload = function() {
+			var canvas = document.getElementById('canvas');
+			canvas.width = 1024;
+			canvas.height = 500;
+			var context = canvas.getContext('2d');
+			setInterval(function() {
+				render(context);
+				
+				upDate();
+			}, 50)
+			
+		}
+		function upDate() {
+			ball.x += ball.vx;
+			ball.y += ball.vy;
+			ball.vy += ball.g;
+
+			if(ball.y >= 500-ball.r) {
+				ball.y = 500 - ball.r;
+				ball.vy = - ball.vy*0.5;
+			}
+			
+			
+		}
+		function render(ctx) {
+
+			ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+
+			ctx.fillStyle = ball.color;
+			ctx.beginPath();
+			ctx.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+			ctx.closePath();
+			ctx.fill();
+		}
+
+	</script>
+</body>
+</html>

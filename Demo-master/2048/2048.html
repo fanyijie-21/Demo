@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="height=device-height,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>2048副本</title>
+	<link rel="stylesheet" href="2048.css">
+
+	<script src="jQuery.js"></script>
+	<script src="support.js"></script>
+	<script src="showanimation.js"></script>
+	<script src="main2048.js"></script>
+</head>
+<body>
+	<header>
+		<h1>2048</h1>
+		<a href="javascript:newgame()" id="newGameButton">New Game</a>
+		<p>score:<span id="score">0</span></p>
+	</header>
+
+	<div id="grid-container">
+		<div class="grid-cell" id="grid-cell-0-0"></div>
+		<div class="grid-cell" id="grid-cell-0-1"></div>
+		<div class="grid-cell" id="grid-cell-0-2"></div>
+		<div class="grid-cell" id="grid-cell-0-3"></div>
+
+		<div class="grid-cell" id="grid-cell-1-0"></div>
+		<div class="grid-cell" id="grid-cell-1-1"></div>
+		<div class="grid-cell" id="grid-cell-1-2"></div>
+		<div class="grid-cell" id="grid-cell-1-3"></div>
+
+		<div class="grid-cell" id="grid-cell-2-0"></div>
+		<div class="grid-cell" id="grid-cell-2-1"></div>
+		<div class="grid-cell" id="grid-cell-2-2"></div>
+		<div class="grid-cell" id="grid-cell-2-3"></div>
+
+		<div class="grid-cell" id="grid-cell-3-0"></div>
+		<div class="grid-cell" id="grid-cell-3-1"></div>
+		<div class="grid-cell" id="grid-cell-3-2"></div>
+		<div class="grid-cell" id="grid-cell-3-3"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.wrap {
+    height: 100vh;
+    width: 100vw;
+    transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear;
+}
+
+@keyframes rotate { 
+    0% {
+        transform: perspective(800px)rotateX(60deg);
+    }
+
+    25% {
+        transform: perspective(800px) rotateZ(30deg) rotateX(70deg);
+    }
+
+    50% {
+        transform: perspective(800px)rotateX(60deg);
+    }
+
+    75% {
+        transform: perspective(800px) rotateZ(-30deg) rotateX(70deg);
+    }
+
+    100% {
+        transform: perspective(800px)rotateX(60deg);
+    }
+}
+
+.wrap div {
+    transform-style: preserve-3d;
+}
+
+.road {
+    height: 300%;
+    width: 100%;
+    bottom: 0;
+    background: #ccc;
+    position: absolute;
+}
+
+.road::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(#000 0, #000 75%, transparent 75%);
+    background-size: 10px 100px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 49%, #000 49%, #000 50%, transparent 50%);
+    animation: moveOn .1s infinite linear;
+}
+
+@keyframes moveOn {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100px);
+    }
+}
+.fly {
+    position: absolute;
+    bottom: 10vw;
+    left: 50%;
+    animation: fly 3s infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate3d(-30vw, 0, 20vw)rotateY(0deg)
+    }
+
+    5% {
+        transform: translate3d(-30vw, 0, 20vw)rotateY(30deg)
+    }
+
+    50% {
+        transform: translate3d(30vw, 0, 20vw)rotateY(0deg)
+    }
+
+    55% {
+        transform: translate3d(30vw, 0, 20vw)rotateY(-30deg)
+    }
+
+    100% {
+        transform: translate3d(-30vw, 0, 20vw)rotateY(0deg)
+    }
+}
+
+.fly::after {
+    content: '';
+    position: absolute;
+    height: 20vw;
+    width: 1vw;
+    background-color: brown;
+    bottom: 10vw;
+    left: -.5vw;
+    animation: hit infinite .1s;
+}
+
+@keyframes hit {
+    0% {
+        transform: translateY(0)
+    }
+
+    100% {
+        transform: translate3d(0, -300vw, -20vw)
+    }
+}
+
+:root {
+    --color-wing: rgb(187, 140, 86);
+}
+
+.flyBody {
+    position: absolute;
+    height: 30vw;
+    width: 3vw;
+    transform: translate(-50%, -50%) rotateY(90deg);
+    background-color: #000;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+
+}
+
+.wing {
+    position: absolute;
+    height: 10vw;
+    width: 30vw;
+    background: var(--color-wing);
+    transform: translate(-50%, -50%);
+    border-radius: 50%/0 0 50% 50%;
+}
+
+.bottomwing {
+    position: absolute;
+    height: 5vw;
+    width: 10vw;
+    background: var(--color-wing);
+    transform: translate3d(-50%, 200%, 2vw);
+    border-radius: 50%/0 0 50% 50%;
+}

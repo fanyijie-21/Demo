@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+
+		#box1 {
+			width: 550px;
+			height: 567px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		#box1>#box2 {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			overflow: hidden;
+		}
+
+		#box1>#box2>img {
+			animation-duration: 2s;
+			animation-name: test;
+			animation-iteration-count: infinite;
+			animation-fill-mode: forwards;
+			animation-timing-function: steps(3,end);/*step 第一个参数是你想规定的动画分几帧走，这是里3，但实际上是有4帧，因为后一个参数是end，故看不到最后一个空白帧*/
+			/*感觉step函数理解还是有点问题，今天晚上再查查资料吧*/
+			/*animation-delay: 1s;*/
+
+		}
+
+		@keyframes test {
+			form {
+				transform: translateY(0px);
+			}
+
+			to {
+				transform: translateY(-1699px);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box1">
+		<div id="box2">
+			<img src="./img/timg.jpeg">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var box2 = document.getElementById('box2');
+		var img = box2.children[0];
+		console.log(img);
+		console.log(getStyle(img, "height"));
+		function getStyle(obj, style) {
+			var obj = getComputedStyle(obj);
+			return obj[style];
+		}		
+	</script>
+</body>
+
+</html>

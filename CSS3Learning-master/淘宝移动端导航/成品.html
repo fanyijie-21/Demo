@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+        }
+
+        html.body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap {
+            width: 100%;
+            margin: 200px auto;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .row>.items {
+            flex: 1;
+            text-align: center;
+        }
+
+        .row>.items>a::before {
+            content: "";
+            display: block;
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+        }
+
+        .row:nth-child(1)>.items:nth-child(1)>a::before {
+
+            background: url(./img/1.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(1)>.items:nth-child(2)>a::before {
+
+            background: url(./img/2.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(1)>.items:nth-child(3)>a::before {
+
+            background: url(./img/3.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(1)>.items:nth-child(4)>a::before {
+
+            background: url(./img/5.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(1)>.items:nth-child(5)>a::before {
+
+            background: url(./img/5.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(2)>.items:nth-child(1)>a::before {
+
+            background: url(./img/6.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(2)>.items:nth-child(2)>a::before {
+
+            background: url(./img/7.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(2)>.items:nth-child(3)>a::before {
+
+            background: url(./img/8.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(2)>.items:nth-child(4)>a::before {
+
+            background: url(./img/9.png);
+            background-size: 50px 50px;
+        }
+
+        .row:nth-child(2)>.items:nth-child(5)>a::before {
+
+            background: url(./img/10.png);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="row">
+            <div class="items"><a href="javascript:;">1</a></div>
+            <div class="items"><a href="javascript:;">2</a></div>
+            <div class="items"><a href="javascript:;">3</a></div>
+            <div class="items"><a href="javascript:;">4</a></div>
+            <div class="items"><a href="javascript:;">5</a></div>
+        </div>
+        <div class="row">
+            <div class="items"><a href="javascript:;">6</a></div>
+            <div class="items"><a href="javascript:;">7</a></div>
+            <div class="items"><a href="javascript:;">8</a></div>
+            <div class="items"><a href="javascript:;">9</a></div>
+            <div class="items"><a href="javascript:;">10</a></div>
+        </div>
+    </div>
+    <script>
+        //保留信息，才发现用JS操控伪元素比较麻烦(╯﹏╰)
+        // window.onload=function(){
+        //     var row=document.querySelectorAll("#wrap>.row");
+        //     var imgCount=1;
+        //     for(var i=0;i<row.length;i++){
+        //         var items=row[i].children;
+        //         for(var j=0;j<items.length;j++){
+        //             var a=document.querySelector(".row:nth-child("+(i+1)+")>.items:nth-child("+(j+1)+")>a::before");
+        //             console.log(a);
+        //             a.style.background="url(./img/"+imgCount+".png)";
+        //             a.style.backgroundSize="50px 50px";
+        //             imgCount++;
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
